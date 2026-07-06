@@ -1,0 +1,231 @@
+:root {
+  --primary: #004ac6;
+  --primary-hover: #003691;
+  --dark: #333333;
+  --white: #ffffff;
+  --border: #eaeaea;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Poppins", sans-serif;
+}
+
+.detail-wrapper {
+  display: flex;
+  gap: 40px;
+  padding: 50px 8%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.main-info {
+  flex: 2;
+}
+
+.venue-header h1 {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 10px 0;
+  letter-spacing: -0.5px;
+}
+
+.meta-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #666666;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.meta-info .rating {
+  color: #ff9900;
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.big-image {
+  height: 380px;
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  border-radius: 12px;
+}
+
+.sub-images {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.small-image {
+  flex: 1;
+  background: #eef2f6;
+  border-radius: 12px;
+}
+
+.description-section h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-top: 30px;
+}
+
+.description-section h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-top: 25px;
+}
+
+.description-section p {
+  color: #555555;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.facility-item {
+  background: var(--white);
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444444;
+}
+
+.booking-sidebar {
+  flex: 1;
+}
+
+.sticky-card {
+  position: sticky;
+  top: 40px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.sticky-card h3 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.price-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f4f8ff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.price-info span {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.price-info h4 {
+  margin: 0;
+  font-size: 22px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444444;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.slot-btn {
+  font-family: "Inter", sans-serif;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.slot-btn.active {
+  background-color: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+  font-weight: 600;
+}
+
+.slot-btn.booked {
+  background-color: #f5f5f5;
+  color: #bbbbbb;
+  cursor: not-allowed;
+  border-color: #eaeaea;
+}
+
+.btn-primary-block {
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary-block:hover {
+  background-color: var(--primary-hover);
+}
