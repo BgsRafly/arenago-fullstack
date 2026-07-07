@@ -31,18 +31,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/home.css">
     <style>
-        .container { padding: 50px 8%; max-width: 600px; margin: 0 auto; font-family: 'Inter', sans-serif; }
-        .card { background: white; border: 1px solid #EAEAEA; padding: 30px; border-radius: 12px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; }
-        select, textarea { width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 8px; box-sizing: border-box; font-family: 'Inter'; }
-        .btn-submit { background: #004AC6; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        .container { padding: 60px 20px; max-width: 700px; margin: 0 auto; font-family: 'Inter', sans-serif; width: 100%; box-sizing: border-box; }
+        .card { background: white; border: 1px solid #EAEAEA; padding: 40px; border-radius: 12px; width: 100%; box-sizing: border-box; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 15px; color: #333; }
+        select, textarea { width: 100%; padding: 14px; border: 1px solid #D1D5DB; border-radius: 8px; box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 15px; }
+        select:focus, textarea:focus { outline: none; border-color: #004AC6; box-shadow: 0 0 0 3px rgba(0,74,198,0.1); }
+        .btn-submit { background: #004AC6; color: white; border: none; padding: 14px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px; width: 100%; transition: 0.3s; }
+        .btn-submit:hover { background: #003691; }
+        .page-title { font-family: 'Poppins', sans-serif; margin: 0 0 30px 0; font-size: 26px; color: #1A202C; text-align: center; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <h2 style="font-family:'Poppins'; margin-top:0;">Tulis Ulasan Pengalaman Anda</h2>
+            <h2 class="page-title">Tulis Ulasan Pengalaman Anda</h2>
             <form method="POST">
                 <div class="form-group">
                     <label>Beri Nilai (Rating)</label>

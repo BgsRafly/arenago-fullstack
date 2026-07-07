@@ -62,7 +62,7 @@ try {
 
                 <div class="form-group" style="margin-bottom: 15px;">
                     <label class="admin-label">Fasilitas / Deskripsi Singkat</label>
-                    <textarea name="description" class="admin-textarea" rows="3" placeholder="Ada kantin, toilet bersih, parkir luas..."><?= $venue ? htmlspecialchars($venue['description']) : '' ?></textarea>
+                    <textarea name="description" class="admin-textarea" rows="3" placeholder="Ada kantin, toilet bersih, parkir luas..."><?= $venue ? htmlspecialchars($venue['description'] ?? '') : '' ?></textarea>
                 </div>
                 
                 <div class="form-group" style="margin-bottom: 25px;">

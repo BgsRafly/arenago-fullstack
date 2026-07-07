@@ -8,7 +8,7 @@ class Booking {
     }
 
     public function createOnlineBooking($user_id, $court_id, $booking_date, $start_time, $end_time, $total_price) {
-        $stmt = $this->pdo->prepare("INSERT INTO bookings (user_id, court_id, booking_date, start_time, end_time, total_price, payment_type, status) VALUES (:uid, :cid, :bdate, :bstart, :bend, :price, 'online', 'pending')");
+        $stmt = $this->pdo->prepare("INSERT INTO bookings (user_id, court_id, booking_date, start_time, end_time, total_price, payment_type, status) VALUES (:uid, :cid, :bdate, :bstart, :bend, :price, 'online', 'success')");
         return $stmt->execute([
             'uid' => $user_id,
             'cid' => $court_id,

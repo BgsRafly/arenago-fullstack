@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label>Daftar Sebagai</label>
                 <select name="role" id="role-select" onchange="togglePartnerForm()" required>
-                    <option value="customer">Penyewa Lapangan (Customer)</option>
+                    <option value="user">Penyewa Lapangan (Customer)</option>
                     <option value="admin_lapangan">Pemilik Tempat Olahraga (Mitra)</option>
                 </select>
             </div>

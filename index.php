@@ -25,7 +25,7 @@ include 'includes/header.php';
                 <i class='bx bx-search-alt'></i>
             </div>
             <h3>Pencarian Mudah</h3>
-            <p>Temukan lapangan terdekat atau sesuai dengan kriteria yang kamu butuhkan dengan cepat menggunakan filter pintar kami.</p>
+            <p>Temukan lapangan sesuai dengan kriteria yang kamu butuhkan dengan cepat menggunakan filter pintar kami.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">

@@ -54,6 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="password" class="form-control" placeholder="Masukkan password Anda" required>
         </div>
         <button type="submit" class="btn-submit">Masuk</button>
+        <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #718096;">
+            Belum punya akun? <a href="register.php" style="color: #004AC6; font-weight: 600; text-decoration: none;">Daftar di sini</a>
+        </p>
     </form>
 </div>
 

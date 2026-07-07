@@ -30,7 +30,7 @@ try {
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #F8F9FA; margin: 0; padding: 0; color: #1A202C; }
 
-        .container { display: flex; padding: 30px 5%; gap: 30px; max-width: 1400px; margin: auto; }
+        .container { display: flex; padding: 30px 5%; gap: 30px; max-width: 1400px; margin: auto; width: 100%; box-sizing: border-box; }
         .sidebar { width: 260px; flex-shrink: 0; }
         .filter-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .filter-title { font-size: 20px; font-weight: 700; margin: 0; }
@@ -83,15 +83,15 @@ try {
         
         <div class="filter-section radio-group">
             <span class="filter-label">Urutkan Berdasarkan</span>
-            <label><input type="radio" name="sort" value="termurah" <?php echo ($sort_filter == 'termurah') ? 'checked' : ''; ?>> Termurah</label>
-            <label><input type="radio" name="sort" value="terdekat" <?php echo ($sort_filter == 'terdekat') ? 'checked' : ''; ?>> Terdekat</label>
-            <label><input type="radio" name="sort" value="tertinggi" <?php echo ($sort_filter == 'tertinggi') ? 'checked' : ''; ?>> Rating Tertinggi</label>
+            <label><input type="radio" name="sort" value="termurah" onchange="this.form.submit()" <?php echo ($sort_filter == 'termurah') ? 'checked' : ''; ?>> Termurah</label>
+            <label><input type="radio" name="sort" value="terdekat" onchange="this.form.submit()" <?php echo ($sort_filter == 'terdekat') ? 'checked' : ''; ?>> Terdekat</label>
+            <label><input type="radio" name="sort" value="tertinggi" onchange="this.form.submit()" <?php echo ($sort_filter == 'tertinggi') ? 'checked' : ''; ?>> Rating Tertinggi</label>
         </div>
 
         <div class="filter-section checkbox-group">
             <span class="filter-label">Tipe Lantai</span>
-            <label><input type="checkbox" name="floor[]" value="Lantai Vynil" <?php echo in_array('Lantai Vynil', $floor_filter) ? 'checked' : ''; ?>> Lantai Vynil</label>
-            <label><input type="checkbox" name="floor[]" value="Lantai Kayu" <?php echo in_array('Lantai Kayu', $floor_filter) ? 'checked' : ''; ?>> Lantai Kayu</label>
+            <label><input type="checkbox" name="floor[]" value="Lantai Vynil" onchange="this.form.submit()" <?php echo in_array('Lantai Vynil', $floor_filter) ? 'checked' : ''; ?>> Lantai Vynil</label>
+            <label><input type="checkbox" name="floor[]" value="Lantai Kayu" onchange="this.form.submit()" <?php echo in_array('Lantai Kayu', $floor_filter) ? 'checked' : ''; ?>> Lantai Kayu</label>
         </div>
 
         <div class="filter-section checkbox-group">
@@ -100,7 +100,7 @@ try {
                 $facs = ['Sewa Raket', 'Kamar Mandi', 'Parkir Luas', 'Papan Skor'];
                 foreach($facs as $f) {
                     $checked = in_array($f, $facility_filter) ? 'checked' : '';
-                    echo "<label><input type='checkbox' name='facility[]' value='$f' $checked> $f</label>";
+                    echo "<label><input type='checkbox' name='facility[]' value='$f' onchange='this.form.submit()' $checked> $f</label>";
                 }
             ?>
         </div>

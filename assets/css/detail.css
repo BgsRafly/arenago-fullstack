@@ -60,27 +60,50 @@ h4 {
 
 .image-gallery {
   display: grid;
-  grid-template-columns: 2fr 1fr;
   gap: 15px;
-  margin: 30px 0;
+  margin-bottom: 25px;
 }
 
-.big-image {
-  height: 380px;
-  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.img-wrap {
+  overflow: hidden;
+  background: #f0f0f0;
   border-radius: 12px;
 }
 
-.sub-images {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.img-wrap:hover .gallery-img {
+  transform: scale(1.05);
 }
 
-.small-image {
-  flex: 1;
-  background: #eef2f6;
-  border-radius: 12px;
+.image-gallery.count-1 { grid-template-columns: 1fr; grid-template-rows: 400px; }
+.count-1 .img-1 { grid-column: 1; grid-row: 1; }
+
+.image-gallery.count-2 { grid-template-columns: 1fr; grid-template-rows: 300px 300px; }
+.count-2 .img-1 { grid-column: 1; grid-row: 1; }
+.count-2 .img-2 { grid-column: 1; grid-row: 2; }
+
+.image-gallery.count-3 { grid-template-columns: 2fr 1fr; grid-template-rows: 200px 200px; }
+.count-3 .img-1 { grid-column: 1; grid-row: 1 / span 2; }
+.count-3 .img-2 { grid-column: 2; grid-row: 1; }
+.count-3 .img-3 { grid-column: 2; grid-row: 2; }
+
+.image-gallery.count-4 { grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 200px 200px; }
+.count-4 .img-1 { grid-column: 1; grid-row: 1 / span 2; }
+.count-4 .img-2 { grid-column: 2; grid-row: 1; }
+.count-4 .img-3 { grid-column: 3; grid-row: 1; }
+.count-4 .img-4 { grid-column: 2 / span 2; grid-row: 2; }
+
+@media (max-width: 768px) {
+  .image-gallery { grid-template-columns: 1fr !important; grid-template-rows: auto !important; }
+  .image-gallery .img-wrap { grid-column: 1 !important; grid-row: auto !important; height: 250px; }
+  .image-gallery .img-wrap:not(.img-1) { display: none; }
 }
 
 .description-section h2 {
@@ -211,10 +234,10 @@ h4 {
 }
 
 .slot-btn.booked {
-  background-color: #f4f6fc;
-  color: #a0aec0;
+  background-color: #E2E8F0;
+  color: #A0AEC0;
   cursor: not-allowed;
-  border: 1px dashed #cbd5e0;
+  border: 1px dashed #CBD5E0;
 }
 
 .btn-primary-block {

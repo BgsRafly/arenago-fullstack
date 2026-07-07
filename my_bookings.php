@@ -55,8 +55,8 @@ try {
         
         .info-section { flex: 1; display: flex; flex-direction: column; justify-content: center; }
         .venue-name { margin: 0 0 8px 0; font-family: 'Poppins', sans-serif; font-size: 20px; color: #2B3674; }
-        .court-location { margin: 0 0 12px 0; color: #4A5568; font-size: 14px; display: flex; align-items: center; gap: 8px; }
-        .court-badge { background: #EDF2F7; color: #2D3748; padding: 4px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; }
+        .court-location { margin: 0 0 12px 0; color: #4A5568; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
+        .court-badge { background: #EDF2F7; color: #2D3748; padding: 4px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
         
         .time-box { display: inline-flex; align-items: center; gap: 10px; background: #F4F7FE; padding: 10px 15px; border-radius: 8px; color: #4318FF; font-weight: 600; font-size: 14px; }
         

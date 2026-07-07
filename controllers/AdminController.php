@@ -100,15 +100,12 @@ class AdminController {
             }
 
             if ($action === 'add') {
-                if (!$image_name) {
-                    $_SESSION['flash_msg_error'] = "Wajib melampirkan foto / gambar lapangan fisik.";
-                    return true;
-                }
-                $this->courtModel->createCourt($venue_id, $court_name, $price_per_hour, $category, $image_name);
+                $image_name = $image_name ?: '';
+                $this->courtModel->createCourt($venue_id, $court_name, $price_per_hour, $image_name, $category);
                 $_SESSION['flash_msg'] = "Berhasil menambahkan unit lapangan baru!";
             } elseif ($action === 'edit' && isset($postData['id'])) {
                 $court_id = intval($postData['id']);
-                $this->courtModel->updateCourt($court_id, $venue_id, $court_name, $price_per_hour, $category, $image_name);
+                $this->courtModel->updateCourt($court_id, $venue_id, $court_name, $price_per_hour, $image_name, $category);
                 $_SESSION['flash_msg'] = "Data Unit Lapangan berhasil diperbarui!";
             }
             return true;
