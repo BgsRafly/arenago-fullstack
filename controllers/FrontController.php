@@ -96,7 +96,7 @@ class FrontController {
         $comment = trim($postData['comment']);
         
         if ($rating > 0 && $rating <= 5) {
-            if ($this->reviewModel->createReview($user_id, $venue_id, $rating, $comment)) {
+            if ($this->reviewModel->createReview($venue_id, $user_id, $rating, $comment)) {
                 return ['success' => "Terima kasih! Ulasan Anda berhasil ditambahkan."];
             } else {
                 return ['error' => "Gagal menyimpan ulasan."];
