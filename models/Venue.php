@@ -34,12 +34,13 @@ class Venue {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function createVenue($user_id, $name, $location, $description, $facilities, $image, $status) {
-        $stmt = $this->pdo->prepare("INSERT INTO venues (user_id, name, location, description, facilities, image, status) VALUES (:uid, :name, :loc, :desc, :fac, :img, :status)");
+    public function createVenue($user_id, $name, $location, $phone, $description, $facilities, $image, $status) {
+        $stmt = $this->pdo->prepare("INSERT INTO venues (user_id, name, location, phone, description, facilities, image, status) VALUES (:uid, :name, :loc, :phone, :desc, :fac, :img, :status)");
         return $stmt->execute([
             'uid' => $user_id,
             'name' => $name,
             'loc' => $location,
+            'phone' => $phone,
             'desc' => $description,
             'fac' => $facilities,
             'img' => $image,
@@ -47,11 +48,12 @@ class Venue {
         ]);
     }
 
-    public function updateVenue($id, $name, $location, $description, $facilities, $image = null, $status = null) {
-        $query = "UPDATE venues SET name = :name, location = :loc, description = :desc, facilities = :fac";
+    public function updateVenue($id, $name, $location, $phone, $description, $facilities, $image = null, $status = null) {
+        $query = "UPDATE venues SET name = :name, location = :loc, phone = :phone, description = :desc, facilities = :fac";
         $params = [
             'name' => $name,
             'loc' => $location,
+            'phone' => $phone,
             'desc' => $description,
             'fac' => $facilities,
             'id' => $id

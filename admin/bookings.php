@@ -57,7 +57,7 @@ try {
                 <tr>
                     <td>#<?php echo $b['id']; ?></td>
                     <td><strong><?php echo htmlspecialchars($b['court_name']); ?></strong></td>
-                    <td><?php echo htmlspecialchars($b['payment_type'] === 'online' ? $b['online_name'] : $b['customer_name_offline']); ?></td>
+                    <td><?php echo htmlspecialchars($b['payment_type'] === 'online' ? ($b['cust_online_name'] ?? '') : ($b['customer_name_offline'] ?? '')); ?></td>
                     <td><?php echo $b['booking_date']; ?></td>
                     <td><?php echo substr($b['start_time'],0,5) . " - " . substr($b['end_time'],0,5); ?></td>
                     <td><span class="admin-badge" style="background:#EAEAEA;"><?php echo strtoupper($b['payment_type']); ?></span></td>

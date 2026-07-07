@@ -120,6 +120,7 @@ class AdminController {
         if (isset($postData['name']) && isset($postData['location'])) {
             $name = trim($postData['name']);
             $location = trim($postData['location']);
+            $phone = trim($postData['phone'] ?? '');
             $description = trim($postData['description'] ?? '');
             $facilities_arr = isset($postData['facilities']) ? $postData['facilities'] : [];
             $facilities = implode(', ', $facilities_arr);
@@ -135,10 +136,10 @@ class AdminController {
             }
 
             if ($venue_id) {
-                $this->venueModel->updateVenue($venue_id, $name, $location, $description, $facilities, $image_name, null);
+                $this->venueModel->updateVenue($venue_id, $name, $location, $phone, $description, $facilities, $image_name, null);
                 return "<p style='color:green; font-weight:600;'>Profil gedung berhasil diperbarui!</p>";
             } else {
-                $this->venueModel->createVenue($user_id, $name, $location, $description, $facilities, $image_name ?? '', 'pending');
+                $this->venueModel->createVenue($user_id, $name, $location, $phone, $description, $facilities, $image_name ?? '', 'pending');
                 return "<p style='color:green; font-weight:600;'>Profil gedung berhasil dibuat! Menunggu validasi superadmin.</p>";
             }
         }

@@ -85,6 +85,9 @@ try {
             <div class="venue-header" style="margin-bottom: 25px;">
                 <h1 class="venue-title"><?php echo htmlspecialchars($venue['name']); ?></h1>
                 <p class="venue-location" style="color: #718096; margin-top: 5px;">📍 <?php echo htmlspecialchars($venue['location']); ?></p>
+                <?php if (!empty($venue['phone'])): ?>
+                    <p class="venue-phone" style="color: #004AC6; margin-top: 5px; font-weight: 500;">📞 <?php echo htmlspecialchars($venue['phone']); ?></p>
+                <?php endif; ?>
             </div>
 
             <div class="description-section">

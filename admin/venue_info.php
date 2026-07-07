@@ -56,6 +56,11 @@ try {
                 </div>
 
                 <div class="form-group" style="margin-bottom: 15px;">
+                    <label class="admin-label">Nomor Telepon Gedung/Venue</label>
+                    <input type="text" name="phone" class="admin-input" value="<?= $venue && isset($venue['phone']) ? htmlspecialchars($venue['phone']) : '' ?>" placeholder="Contoh: 08123456789">
+                </div>
+
+                <div class="form-group" style="margin-bottom: 15px;">
                     <label class="admin-label">Fasilitas / Deskripsi Singkat</label>
                     <textarea name="description" class="admin-textarea" rows="3" placeholder="Ada kantin, toilet bersih, parkir luas..."><?= $venue ? htmlspecialchars($venue['description']) : '' ?></textarea>
                 </div>

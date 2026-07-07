@@ -100,12 +100,13 @@ class AuthController {
                     if ($role === 'admin_lapangan') {
                         $venue_name = trim($postData['venue_name'] ?? '');
                         $venue_location = trim($postData['venue_location'] ?? '');
+                        $venue_phone = trim($postData['venue_phone'] ?? '');
                         
-                        if (empty($venue_name) || empty($venue_location)) {
+                        if (empty($venue_name) || empty($venue_location) || empty($venue_phone)) {
                             throw new Exception("Seluruh informasi detail data lapangan wajib diisi lengkap!");
                         }
 
-                        $this->venueModel->createVenue($user_id, $venue_name, $venue_location, '', '', '', 'pending');
+                        $this->venueModel->createVenue($user_id, $venue_name, $venue_location, $venue_phone, '', '', '', 'pending');
                         $success = "Pendaftaran Mitra Berhasil! Akun Anda sedang ditinjau oleh Superadmin.";
                     } else {
                         $success = "Pendaftaran Berhasil! Silakan masuk dengan akun Anda.";

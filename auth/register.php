@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3 style="font-family:'Poppins'; margin-top:0; font-size:15px; color:#004AC6;">Detail Data Tempat Olahraga</h3>
                 <div class="form-group"><label>Nama Tempat Olahraga (Venue)</label><input type="text" name="venue_name" placeholder="Contoh: Smash Arena Denpasar"></div>
                 <div class="form-group"><label>Alamat Lengkap Lokasi Lapangan</label><textarea name="venue_location" rows="3" placeholder="Nama jalan, kota, dan koordinat singkat..."></textarea></div>
+                <div class="form-group"><label>Nomor Telepon Lapangan</label><input type="text" name="venue_phone" placeholder="Contoh: 08123456789"></div>
             </div>
 
             <button type="submit" class="btn-submit">Selesaikan Pendaftaran</button>

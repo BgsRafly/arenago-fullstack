@@ -14,6 +14,7 @@ CREATE TABLE venues (
     user_id INT NOT NULL, 
     name VARCHAR(100) NOT NULL,
     location TEXT NOT NULL,
+    phone VARCHAR(25),
     description TEXT,
     status ENUM('pending', 'approved') DEFAULT 'pending',
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
