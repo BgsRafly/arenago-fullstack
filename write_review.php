@@ -14,10 +14,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $controller->handleReview($_POST, $_SESSION['user_id']);
         
         if (isset($result['success'])) {
-            echo "<script>alert('" . addslashes($result['success']) . "'); window.location.href='my_bookings.php';</script>";
-            exit;
+            echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: '" . addslashes($result['success']) . "',
+                        confirmButtonColor: '#004AC6'
+                    }).then(() => {
+                        window.location.href = 'my_bookings.php';
+                    });
+                });
+            </script>";
         } else {
-            echo "<script>alert('" . addslashes($result['error']) . "');</script>";
+            echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: '" . addslashes($result['error']) . "',
+                        confirmButtonColor: '#004AC6'
+                    });
+                });
+            </script>";
         }
     } catch (Exception $e) {
         die("Error: " . $e->getMessage());

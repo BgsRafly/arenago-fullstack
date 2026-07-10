@@ -44,6 +44,10 @@ class AuthController {
                                 header("Location: ../search.php");
                                 exit;
                             }
+                            if ($redirect === 'booking') {
+                                header("Location: ../booking.php");
+                                exit;
+                            }
 
                             if ($user['role'] === 'superadmin') {
                                 header("Location: ../superadmin/dashboard.php");
@@ -52,6 +56,10 @@ class AuthController {
                                 header("Location: ../admin/dashboard.php");
                                 exit;
                             } else {
+                                if (isset($_SESSION['pending_booking'])) {
+                                    header("Location: ../booking.php");
+                                    exit;
+                                }
                                 header("Location: ../index.php");
                                 exit;
                             }

@@ -158,7 +158,7 @@ try {
             <div class="sticky-card">
                 <h3>Pesan Jadwal</h3>
                 
-                <form action="booking.php" method="GET" id="bookingForm">
+                <form action="booking.php" method="POST" id="bookingForm">
                     <div class="form-group">
                         <label>Pilih Lapangan</label>
                         <select name="court_id" id="courtSelect" class="form-input" required>

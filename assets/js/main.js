@@ -15,8 +15,15 @@ document.addEventListener("DOMContentLoaded", function() {
     btnPesanBiasa.forEach(btn => {
         btn.addEventListener("click", function(e) {
             e.preventDefault();
-            alert("Akses Dikunci! Anda wajib masuk/daftar akun terlebih dahulu untuk melanjutkan penyewaan jam lapangan.");
-            window.location.href = "auth/login.php";
+            const targetUrl = this.getAttribute('href') || "auth/login.php";
+            Swal.fire({
+                icon: 'warning',
+                title: 'Akses Dikunci',
+                text: 'Anda wajib masuk/daftar akun terlebih dahulu untuk melanjutkan penyewaan jam lapangan.',
+                confirmButtonColor: '#004AC6'
+            }).then(() => {
+                window.location.href = targetUrl;
+            });
         });
     });
 });

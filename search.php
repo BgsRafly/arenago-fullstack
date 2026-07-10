@@ -15,7 +15,16 @@ try {
 } catch (Exception $e) {
     $venues = [];
     $search_query = ''; $floor_filter = []; $facility_filter = []; $sort_filter = '';
-    echo "<script>alert('Gagal mengambil data pencarian: " . addslashes($e->getMessage()) . "');</script>";
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal Memuat Pencarian',
+                text: 'Gagal mengambil data pencarian: " . addslashes($e->getMessage()) . "',
+                confirmButtonColor: '#004AC6'
+            });
+        });
+    </script>";
 }
 ?>
 <!DOCTYPE html>
@@ -83,7 +92,7 @@ try {
         
         <div class="filter-section radio-group">
             <span class="filter-label">Urutkan Berdasarkan</span>
-            <label><input type="radio" name="sort" value="termurah" onchange="this.form.submit()" <?php echo ($sort_filter == 'termurah') ? 'checked' : ''; ?>> Termurah</label>
+            <label><input type="radio" name="sort" value="termurah" onchange="this.form.submit()" <?php echo ($sort_filter == 'termurah') ? 'checked' : ''; ?>> FTermurah</label>
             <label><input type="radio" name="sort" value="terdekat" onchange="this.form.submit()" <?php echo ($sort_filter == 'terdekat') ? 'checked' : ''; ?>> Terdekat</label>
             <label><input type="radio" name="sort" value="tertinggi" onchange="this.form.submit()" <?php echo ($sort_filter == 'tertinggi') ? 'checked' : ''; ?>> Rating Tertinggi</label>
         </div>
@@ -149,7 +158,7 @@ try {
                             <?php if (isset($_SESSION['user_id'])): ?>
                                 <a href="detail.php?id=<?php echo $row['id'] ?? 1; ?>" class="btn-pesan">Pesan Sekarang</a>
                             <?php else: ?>
-                                <a href="auth/login.php?redirect=search" class="btn-pesan" onclick="return confirm('Anda harus login terlebih dahulu!');">Pesan Sekarang</a>
+                                <a href="auth/login.php?redirect=search" class="btn-pesan btn-intercept-login">Pesan Sekarang</a>
                             <?php endif; ?>
                         </div>
                     </div>

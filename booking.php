@@ -1,25 +1,67 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['court_id'])) {
+    $_SESSION['pending_booking'] = [
+        'court_id' => intval($_POST['court_id']),
+        'date' => $_POST['date'],
+        'time_slots' => $_POST['time_slots']
+    ];
+    header("Location: booking.php");
+    exit;
+}
+
 include 'config/database.php';
 require_once 'controllers/FrontController.php';
 
 include 'includes/header.php';
 
 if (!isset($_SESSION['user_id'])) {
-    echo "<script>alert('Anda wajib login atau daftar akun terlebih dahulu sebelum memesan lapangan!'); window.location.href='auth/login.php';</script>";
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Akses Dikunci',
+                text: 'Anda wajib login atau daftar akun terlebih dahulu sebelum memesan lapangan!',
+                confirmButtonColor: '#004AC6'
+            }).then(() => {
+                window.location.href = 'auth/login.php?redirect=booking';
+            });
+        });
+    </script>";
     exit;
 }
 
-$court_id = isset($_GET['court_id']) ? intval($_GET['court_id']) : 0;
-$booking_date = isset($_GET['date']) ? $_GET['date'] : '';
-$time_slots_str = isset($_GET['time_slots']) ? trim($_GET['time_slots']) : '';
+$court_id = 0;
+$booking_date = '';
+$time_slots_str = '';
+
+if (isset($_SESSION['pending_booking'])) {
+    $court_id = intval($_SESSION['pending_booking']['court_id']);
+    $booking_date = $_SESSION['pending_booking']['date'];
+    $time_slots_str = trim($_SESSION['pending_booking']['time_slots']);
+}
 
 if ($court_id <= 0 || empty($booking_date) || empty($time_slots_str)) {
-    die("<script>alert('Informasi jadwal tidak valid!'); window.location.href='search.php';</script>");
+    die("<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Kesalahan',
+                text: 'Informasi jadwal tidak valid atau sesi pemesanan telah kedaluwarsa!',
+                confirmButtonColor: '#004AC6'
+            }).then(() => {
+                window.location.href = 'search.php';
+            });
+        });
+    </script>");
 }
 
 // Parse time slots
 $time_slots = explode(',', $time_slots_str);
-sort($time_slots); // Ensure chronological order
+sort($time_slots); 
 
 try {
     require_once 'models/Court.php';
@@ -45,10 +87,30 @@ try {
         );
         
         if (!empty($result['error'])) {
-            echo "<script>alert('" . addslashes($result['error']) . "');</script>";
+            echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Pemesanan Gagal',
+                        text: '" . addslashes($result['error']) . "',
+                        confirmButtonColor: '#004AC6'
+                    });
+                });
+            </script>";
         } else {
-            echo "<script>alert('" . addslashes($result['success']) . "'); window.location.href='my_bookings.php';</script>";
-            exit;
+            unset($_SESSION['pending_booking']);
+            echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Pemesanan Berhasil',
+                        text: '" . addslashes($result['success']) . "',
+                        confirmButtonColor: '#004AC6'
+                    }).then(() => {
+                        window.location.href = 'my_bookings.php';
+                    });
+                });
+            </script>";
         }
     }
 } catch (Exception $e) {
